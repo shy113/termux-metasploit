@@ -143,6 +143,7 @@ LOG "psql数据库"
 } | whiptail --backtitle "项目地址：github.com/UtermuxBlog/termux-metasploit" --title "设置PostgreSQL数据库" --gauge "⚙️设置PostgreSQL数据库" 0 50 0 
 
 pg_ctl -D "$PREFIX"/var/lib/postgresql stop > /dev/null 2>&1 || true
+pg_ctl -D /data/data/com.termux/files/usr/var/lib/postgresql -l logfile start
 if ! pg_ctl -D "$PREFIX"/var/lib/postgresql start -A --silent; then
         initdb "$PREFIX"/var/lib/postgresql
 fi
